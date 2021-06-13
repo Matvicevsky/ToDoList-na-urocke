@@ -1,8 +1,8 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0';
+import {Meta, Story} from '@storybook/react/types-6-0';
 
-import { Task, TaskPropsType } from './Task';
+import {Task, TaskPropsType} from './Task';
 import {action} from "@storybook/addon-actions";
 
 export default {
@@ -25,10 +25,10 @@ const baseArgs = {
 export const TaskIsDoneExample = Template.bind( {} );
 TaskIsDoneExample.args = {
     ...baseArgs,
-    task: { id: '1', isDone: true, title: 'JS' }
+    task: { id: '1', completed: true,filter: 'all' ,title: 'JS', addedDate:'', deadline: '',  description: '', starDate: '', order: 1, status: 1, todolistId: "2", priority: 1 }
 }
 export const TaskIsNotDoneExample = Template.bind( {} );
 TaskIsNotDoneExample.args = {
     ...baseArgs,
-    task: { id: '1', isDone: false, title: 'JS' }
+    task: { id: '1', completed: false, filter: 'all' ,title: 'JS', addedDate:'', deadline: '',  description: '', starDate: '', order: 1, status: 1, todolistId: "2", priority: 1 }
 }

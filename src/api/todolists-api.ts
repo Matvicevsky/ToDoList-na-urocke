@@ -17,6 +17,7 @@ export type TodolistType = {
     id: string;
     title: string,
     filter: FilterValuesType
+    completed: boolean
 }
 type CreateTodolistDataType = {
     item: TodolistType
@@ -30,6 +31,7 @@ export type TaskType = {
     description: string,
     title: string,
     completed: boolean,
+    filter: FilterValuesType,
     status: number,
     priority: number,
     starDate: string,
@@ -73,8 +75,7 @@ export const todolistsApi = {
     },
 
     createTodolist(title: string) {
-        const promise = instance.post<ResponseType<CreateTodolistDataType>>('todo-lists', {title: title});
-        return promise;
+        return instance.post<ResponseType<CreateTodolistDataType>>('todo-lists', {title: title});
     },
 
     deleteTodolist(id: string) {
@@ -86,8 +87,7 @@ export const todolistsApi = {
     },
 
     getTasks(todolistId: string) {
-        const promise = instance.get<GetTasksResponseType>(`todo-lists/${todolistId}/tasks`);
-        return promise;
+        return instance.get<GetTasksResponseType>(`todo-lists/${todolistId}/tasks`);
     },
 
     createTask(todolistId: string, title: string) {

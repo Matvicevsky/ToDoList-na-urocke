@@ -1,10 +1,6 @@
-import {TasksStateType, TodolistType} from '../App';
-import {addTodolistAC, setTodolistsAC, TodolistDomainType, todolistsReducer} from './todolists-reducer';
+import {TasksStateType, TodolistType} from '../AppWithRedux';
+import {addTodolistAC, setTodolistsAC, todolistsReducer} from './todolists-reducer';
 import {tasksReducer} from './tasks-reducer';
-
-let todolistId1: string;
-let todolistId2: string;
-let startState: Array<TodolistDomainType> = [];
 
 
 test('ids should be equals', () => {
