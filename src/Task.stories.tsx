@@ -25,10 +25,10 @@ const baseArgs = {
 export const TaskIsDoneExample = Template.bind( {} );
 TaskIsDoneExample.args = {
     ...baseArgs,
-    task: { id: '1', completed: true,filter: 'all' ,title: 'JS', addedDate:'', deadline: '',  description: '', starDate: '', order: 1, status: 1, todolistId: "2", priority: 1 }
+    task: { id: '1' ,title: 'JS', addedDate:'', deadline: '',  description: '', starDate: '', order: 1, status: 1, todoListId: "2", priority: 1,  }
 }
 export const TaskIsNotDoneExample = Template.bind( {} );
 TaskIsNotDoneExample.args = {
     ...baseArgs,
-    task: { id: '1', completed: false, filter: 'all' ,title: 'JS', addedDate:'', deadline: '',  description: '', starDate: '', order: 1, status: 1, todolistId: "2", priority: 1 }
+    task: { id: '1' ,title: 'JS', addedDate:'', deadline: '',  description: '', starDate: '', order: 1, status: 1, todoListId: "2", priority: 1 }
 }

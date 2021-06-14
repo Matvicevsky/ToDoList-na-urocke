@@ -1,5 +1,5 @@
 import axios from "axios";
-import {FilterValuesType} from "../AppWithRedux";
+import {FilterValuesType, TaskPriorities, TaskStatuses} from "../AppWithRedux";
 
 const settings = {
     withCredentials: true,
@@ -30,14 +30,12 @@ type ResponseType<D = {}> = {
 export type TaskType = {
     description: string,
     title: string,
-    completed: boolean,
-    filter: FilterValuesType,
-    status: number,
-    priority: number,
+    status: TaskStatuses,
+    priority: TaskPriorities,
     starDate: string,
     deadline: string,
     id: string,
-    todolistId: string,
+    todoListId: string,
     order: number,
     addedDate: string
 }
@@ -100,6 +98,9 @@ export const todolistsApi = {
 
     updateTask(todolistId: string, id: string, title: string) {
         return instance.put<UpdateTaskType>(`todo-lists/${todolistId}/tasks/${id}`, {title: title})
-    }
+    },
 
 }
+
+// 5033e193-99c8-4141-a114-8e27eeb71d63
+// 48e3f506-082b-410e-b2da-adbf201003b9
