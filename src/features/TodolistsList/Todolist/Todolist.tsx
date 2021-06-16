@@ -8,10 +8,12 @@ import {TaskStatuses, TaskType} from '../../../api/todolists-api'
 import {FilterValuesType} from '../todolists-reducer'
 import {useDispatch} from 'react-redux'
 import {fetchTasksTC} from '../tasks-reducer'
+import {RequestStatusType} from "../../../app/app-reducer";
 
 type PropsType = {
     id: string
     title: string
+    entityStatus: RequestStatusType
     tasks: Array<TaskType>
     changeFilter: (value: FilterValuesType, todolistId: string) => void
     addTask: (title: string, todolistId: string) => void
@@ -25,7 +27,6 @@ type PropsType = {
 }
 
 export const Todolist = React.memo(function (props: PropsType) {
-    console.log('Todolist called')
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -60,14 +61,17 @@ export const Todolist = React.memo(function (props: PropsType) {
 
     return <div>
         <h3><EditableSpan value={props.title} onChange={changeTodolistTitle}/>
-            <IconButton onClick={removeTodolist}>
+            <IconButton onClick={removeTodolist} disabled={props.entityStatus === 'loading'}>
                 <Delete/>
             </IconButton>
         </h3>
-        <AddItemForm addItem={addTask}/>
+        <AddItemForm disabled={props.entityStatus === "loading"} addItem={addTask}/>
         <div>
             {
-                tasksForTodolist.map(t => <Task key={t.id} task={t} todolistId={props.id}
+                tasksForTodolist.map(t => <Task key={t.id}
+                                                task={t}
+                                                todolistId={props.id}
+                                                entityStatus={props.entityStatus}
                                                 removeTask={props.removeTask}
                                                 changeTaskTitle={props.changeTaskTitle}
                                                 changeTaskStatus={props.changeTaskStatus}

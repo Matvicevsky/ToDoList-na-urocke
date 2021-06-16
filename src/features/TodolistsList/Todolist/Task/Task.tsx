@@ -3,10 +3,12 @@ import {Checkbox, IconButton} from '@material-ui/core'
 import {EditableSpan} from '../../../../components/EditableSpan/EditableSpan'
 import {Delete} from '@material-ui/icons'
 import {TaskStatuses, TaskType} from '../../../../api/todolists-api'
+import {RequestStatusType} from "../../../../app/app-reducer";
 
 type TaskPropsType = {
     task: TaskType
     todolistId: string
+    entityStatus: RequestStatusType
     changeTaskStatus: (id: string, status: TaskStatuses, todolistId: string) => void
     changeTaskTitle: (taskId: string, newTitle: string, todolistId: string) => void
     removeTask: (taskId: string, todolistId: string) => void
